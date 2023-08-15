@@ -1,0 +1,49 @@
+<button type="button" class="btn btn-primary mb-2" (click)="regresar()">Regresar</button>
+
+<div class="card">
+    <div class="card-header">
+        <h4 *ngIf="isDelete">Eliminar juego {{juego.nombre}}</h4>
+        <h4 *ngIf="isUpdate">Editar juego {{juego.nombre}}</h4>
+        <h4 *ngIf="!isDelete && !isUpdate">Registrar juego</h4>
+    </div>
+
+    <form class="p-4" role="form" (submit)="submit()">
+
+        <div class="form-group mt-2">
+            <label for="id">Id</label>
+            <input type="number" class="form-control" id="id" [(ngModel)]="juego.id" [ngModelOptions]="{standalone: true}" placeholder="Id..." [disabled]="isDelete || isUpdate">
+        </div>
+        <div class="form-group mt-2">
+            <label for="nombre">Nombre</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]="juego.nombre" [ngModelOptions]="{standalone: true}" placeholder="Nombre..." [disabled]="isDelete">
+        </div>
+
+        <div class="form-group mt-2">
+            <label for="plataforma">Plataforma</label>
+            <select class="form-control" id="plataforma" [(ngModel)]="juego.plataforma" [ngModelOptions]="{standalone: true}" [disabled]="isDelete">
+                <option value="Xbox 360">Xbox 360</option>
+                <option value="Xbox One">Xbox One</option>
+                <option value="PC">PC</option>
+                <option value="Play Station">Play Station</option>
+                <option value="Wii">Wii</option>
+                <option value="Nintendo Switch">Nintendo Switch</option>
+                <option value="Play Station 5">Play Station 5</option>
+            </select>
+        </div>
+        <div class="form-group mt-2">
+            <label for="formato">Formato</label>
+            <input type="text" class="form-control" id="color" [(ngModel)]="juego.formato" [ngModelOptions]="{standalone: true}" placeholder="Formato..." [disabled]="isDelete">
+        </div>
+
+        <div class="form-group mt-2">
+            <label for="stock">Stock</label>
+            <input type="number" class="form-control" id="precio" [(ngModel)]="juego.stock" [ngModelOptions]="{standalone: true}" placeholder="Stock..." [disabled]="isDelete">
+        </div>
+        <div class="form-group mt-2">
+            <label for="precio">Precio</label>
+            <input type="number" class="form-control" id="precio" [(ngModel)]="juego.precio" [ngModelOptions]="{standalone: true}" placeholder="Precio..." [disabled]="isDelete">
+        </div>
+
+        <button class="btn btn-info mt-4">{{isDelete ? 'Eliminar' : 'Guardar'}}</button>
+    </form>
+</div>
